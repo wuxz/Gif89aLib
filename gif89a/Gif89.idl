@@ -1,0 +1,63 @@
+#include <olectl.h>
+// Gif89.idl : IDL source for Gif89.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Gif89.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	
+
+	[
+		object,
+		uuid(28D4752F-CF84-11D1-834C-00A0249F0C28),
+		dual,
+		helpstring("IGif89a Interface"),
+		pointer_default(unique)
+	]
+
+	interface IGif89a : IDispatch
+	{
+		[propput, id(DISPID_ENABLED)]
+		HRESULT Enabled([in]VARIANT_BOOL vbool);
+		[propget, id(DISPID_ENABLED)]
+		HRESULT Enabled([out,retval]VARIANT_BOOL* pbool);
+		[propget, id(DISPID_HWND)]
+		HRESULT Window([out, retval]long* phwnd);
+		[id(1), helpstring("method Play")] HRESULT Play();
+		[id(2), helpstring("method Stop")] HRESULT Stop();
+		[propget, id(4), helpstring("property AutoStart")] HRESULT AutoStart([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(4), helpstring("property AutoStart")] HRESULT AutoStart([in] VARIANT_BOOL newVal);
+		[propget, id(5), helpstring("property Speed")] HRESULT Speed([out, retval] long *pVal);
+		[propput, id(5), helpstring("property Speed")] HRESULT Speed([in] long newVal);
+		[propget, id(6), helpstring("property Glass")] HRESULT Glass([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(6), helpstring("property Glass")] HRESULT Glass([in] VARIANT_BOOL newVal);
+		[propput, id(7)]	HRESULT AutoSize([in]VARIANT_BOOL vbool);
+		[propget, id(7)]	HRESULT AutoSize([out,retval]VARIANT_BOOL* pbool);
+		[propget, id(8), helpstring("property Embed")] HRESULT Embed([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(8), helpstring("property Embed")] HRESULT Embed([in] VARIANT_BOOL newVal);
+		[propget, id(9), helpstring("property FileName")] HRESULT FileName([out, retval] BSTR *pVal);
+		[propput, id(9), helpstring("property FileName")] HRESULT FileName([in] BSTR newVal);
+		[id(DISPID_ABOUTBOX)]HRESULT AboutBox();
+	};
+[
+	uuid(28D47522-CF84-11D1-834C-00A0249F0C28),
+	version(1.0),
+	helpstring("Gif89 1.0")
+]
+library GIF89Lib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(28D47530-CF84-11D1-834C-00A0249F0C28),
+		helpstring("Gif89a Class")
+	]
+	coclass Gif89a
+	{
+		[default] interface IGif89a;
+	};
+};
